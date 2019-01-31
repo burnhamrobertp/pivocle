@@ -1,0 +1,12 @@
+@import "src/sass/default.theme";
+
+.node {
+  position: absolute;
+  padding: 2px;
+  border: $node-border;
+  border-radius: 8px;
+
+  header input {
+    border: 0;
+  }
+}
