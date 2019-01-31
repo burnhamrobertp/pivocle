@@ -10,7 +10,7 @@ class Node extends React.PureComponent {
   };
 
   render() {
-    const { x, y } = this.props;
+    const { x, y } = this.props
 
     return (
       <div className={styles.node} style={{ top: y, left: x }}>

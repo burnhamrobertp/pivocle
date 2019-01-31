@@ -1,8 +1,9 @@
 import React from 'react'
-import v4 from 'uuid';
-import Node from './node';
+import v4 from 'uuid'
+import Node from './node/Node'
+import styles from './canvas.module.scss'
 
-class Pivocle extends React.PureComponent {
+class Canvas extends React.PureComponent {
   static propTypes = {};
 
   state = { nodes: [] };
@@ -17,11 +18,11 @@ class Pivocle extends React.PureComponent {
   renderNodes = () => this.state.nodes.map(node => <Node key={node.id} {...node} />);
 
   render() {
-    return <React.Fragment>
+    return <div className={styles.canvas}>
       <button onClick={this.addNode}>New Node</button>
       {this.renderNodes()}
-    </React.Fragment>
+    </div>
   }
 }
 
-export default Pivocle
+export default Canvas
