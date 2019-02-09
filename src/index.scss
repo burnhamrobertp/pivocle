@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600');
-@import './sass/config';
+@import "default.theme";
 
 html, body, #root {
   width: 100%;
@@ -15,10 +15,16 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  input {
+  input, textarea {
+    margin: 0;
+    padding: 0;
     font: $font;
     line-height: 14px;
   }
+}
+
+*:focus {
+  outline: none;
 }
 
 code {

@@ -1,4 +1,4 @@
-@import "src/sass/default.theme";
+@import "default.theme";
 
 .node {
   position: absolute;
@@ -45,9 +45,15 @@
         outline: none;
       }
 
-      ::placeholder {
+      &::placeholder {
         font-style: italic;
       }
     }
   }
+}
+
+.debug {
+  position: absolute;
+  bottom: -1rem;
+  font-size: .8rem;
 }
