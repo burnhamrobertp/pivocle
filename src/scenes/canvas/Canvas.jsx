@@ -5,6 +5,8 @@ import v4 from 'uuid'
 import Node from './node/Node'
 import styles from './canvas.module.scss'
 import { withConfigContext } from '../../config/config-context'
+
+import { ContextMenu, MenuItem, ContextMenuTrigger } from 'react-contextmenu'
 import DebugButton from './components/DebugButton'
 
 class Canvas extends React.PureComponent {
@@ -19,16 +21,15 @@ class Canvas extends React.PureComponent {
     },
   }
 
-  addNode = () => {
+  addNode = e => {
+    const x = e.clientX
+    const y = e.clientY
     const id = v4()
+
     this.setState(state => ({
       nodes: {
         ...state.nodes,
-        [id]: {
-          id,
-          x: Math.random() * window.innerWidth,
-          y: Math.random() * window.innerHeight,
-        },
+        [id]: { id, x, y },
       },
     }))
   }
@@ -55,10 +56,20 @@ class Canvas extends React.PureComponent {
         <DebugButton />
         {connectDropTarget(
           <div className={styles.canvas}>
-            <button onClick={this.addNode}>New Node</button>
-            {Object.values(nodes).map(node => (
-              <Node key={node.id} id={node.id} x={node.x} y={node.y} />
-            ))}
+            <ContextMenuTrigger
+              id="canvas-menu"
+              attributes={{ className: styles.contextMenuWrapper }}
+            >
+              <div className={styles.canvas}>
+                {Object.values(nodes).map(node => (
+                  <Node key={node.id} id={node.id} x={node.x} y={node.y} />
+                ))}
+              </div>
+            </ContextMenuTrigger>
+
+            <ContextMenu id="canvas-menu">
+              <MenuItem onClick={this.addNode}>New Node</MenuItem>
+            </ContextMenu>
           </div>
         )}
       </React.Fragment>
