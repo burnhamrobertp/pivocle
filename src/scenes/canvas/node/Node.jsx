@@ -16,12 +16,12 @@ class Node extends React.PureComponent {
     if (isDragging) return null
 
     return connectDragSource(
-      <div className={styles.node} style={{ top: y, left: x }}>
+      <div className={styles.node} style={{ width: '225px', top: y, left: x }}>
         <header>
-          <input type="text" defaultValue="some header" />
+          <input type="text" placeholder="provide title..." />
         </header>
         <section>
-          <textarea defaultValue={`x: ${this.props.x} - y: ${this.props.y}`} />
+          <textarea placeholder={`x: ${this.props.x} - y: ${this.props.y}`} />
         </section>
       </div>
     )

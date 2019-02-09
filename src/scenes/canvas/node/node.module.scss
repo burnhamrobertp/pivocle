@@ -2,18 +2,52 @@
 
 .node {
   position: absolute;
-  padding: 2px;
   border: $node-border;
-  border-radius: 8px;
+  border-radius: 3px;
   background-color: $node-background;
 
-  header input {
-    width: 100%;
-    border: 0;
-    background-color: $node-background;
+  &:hover {
+    cursor: pointer;
+  }
 
-    &:focus {
-      outline: none;
+  header {
+    margin: 5px 5px 0 5px;
+
+    input {
+      width: 100%;
+      border: 0;
+      background-color: $node-background;
+
+      &:hover {
+        cursor: inherit;
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      &::placeholder {
+        font-style: italic;
+      }
+    }
+  }
+
+  section {
+    margin: 5px;
+
+    textarea {
+      width: 100%;
+      border: none;
+      background-color: transparent;
+      resize: none;
+
+      &:focus {
+        outline: none;
+      }
+
+      ::placeholder {
+        font-style: italic;
+      }
     }
   }
 }
