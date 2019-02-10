@@ -41,6 +41,10 @@
       background-color: transparent;
       resize: none;
 
+      &:hover {
+        cursor: inherit;
+      }
+
       &:focus {
         outline: none;
       }

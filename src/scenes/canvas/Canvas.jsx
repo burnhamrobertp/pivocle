@@ -15,10 +15,7 @@ class Canvas extends React.PureComponent {
   }
 
   state = {
-    nodes: {
-      a: { id: 'a', x: 80, y: 20 },
-      b: { id: 'b', x: 20, y: 180 },
-    },
+    nodes: {},
   }
 
   addNode = e => {
@@ -67,8 +64,13 @@ class Canvas extends React.PureComponent {
               </div>
             </ContextMenuTrigger>
 
-            <ContextMenu id="canvas-menu">
-              <MenuItem onClick={this.addNode}>New Node</MenuItem>
+            <ContextMenu id="canvas-menu" className={styles.contextMenu}>
+              <MenuItem
+                onClick={this.addNode}
+                attributes={{ className: styles.contextMenuRow }}
+              >
+                New Node
+              </MenuItem>
             </ContextMenu>
           </div>
         )}

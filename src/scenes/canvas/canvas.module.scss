@@ -9,3 +9,18 @@
   width: 100%;
   height: 100%;
 }
+
+.contextMenu {
+
+}
+
+.contextMenuRow {
+  background-color: #fafafa;
+  border: $node-border;
+  padding: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $active;
+  }
+}
