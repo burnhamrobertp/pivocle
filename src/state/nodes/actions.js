@@ -1,7 +1,7 @@
 import { createAction } from 'redux-actions'
 
-const B = 'NODE'
+const B = 'NODES'
 
-const addNode = createAction(`${B}/ADD`)
-const removeNode = createAction(`${B}/REMOVE`)
-const setNode = createAction(`${B}/SET`)
+export const setNode = createAction(`${B}/SET`)
+export const moveNode = createAction(`${B}/MOVE`)
+export const removeNode = createAction(`${B}/REMOVE`)

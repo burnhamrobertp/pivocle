@@ -2,7 +2,7 @@ import React from 'react'
 import HTML5Backend from 'react-dnd-html5-backend'
 import { DragDropContextProvider } from 'react-dnd'
 import ConfigContextProvider from './config/config-context-provider'
-import Canvas from './scenes/canvas/Canvas'
+import Canvas from './scenes/canvas/canvas'
 import styles from './pivocle.module.scss'
 
 class Pivocle extends React.PureComponent {
