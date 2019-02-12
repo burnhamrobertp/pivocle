@@ -12,6 +12,7 @@ import { nodeTarget, collect } from './canvas-dnd'
 import DebugButton from './components/DebugButton'
 import Node from './node/Node'
 import styles from './canvas.module.scss'
+import SaveButton from './components/SaveButton'
 
 class Canvas extends React.PureComponent {
   static propTypes = {
@@ -50,6 +51,7 @@ class Canvas extends React.PureComponent {
           attributes={{ className: styles.contextMenuWrapper }}
         >
           <div className={styles.canvas}>
+            <SaveButton />
             <DebugButton />
             {connectDropTarget(
               <div className={styles.canvas}>

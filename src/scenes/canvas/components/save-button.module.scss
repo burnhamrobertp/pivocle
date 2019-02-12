@@ -1,0 +1,16 @@
+@import "default.theme";
+
+.saveButton {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: none;
+  padding: 10px;
+  background-color: transparent;
+  color: $toggle-off;
+  cursor: pointer;
+
+  &:hover {
+    color: $toggle-on
+  }
+}
