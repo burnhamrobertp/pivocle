@@ -11,7 +11,7 @@
   }
 
   header {
-    margin: 5px 5px 0 5px;
+    margin: 8px;
 
     input {
       width: 100%;
@@ -33,13 +33,14 @@
   }
 
   section {
-    margin: 5px;
+    margin: 8px;
 
     textarea {
       width: 100%;
       border: none;
       background-color: transparent;
       resize: none;
+      font-size: 13px;
 
       &:hover {
         cursor: inherit;
