@@ -3,8 +3,9 @@ import T from 'prop-types'
 import classNames from 'classnames'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGhost } from '@fortawesome/free-solid-svg-icons/faGhost'
-import styles from './debug-button.module.scss'
-import { withConfigContext } from '../../../config/config-context'
+
+import { withConfigContext } from 'config/config-context'
+import styles from './buttons.module.scss'
 
 class DebugButton extends React.PureComponent {
   static propTypes = {

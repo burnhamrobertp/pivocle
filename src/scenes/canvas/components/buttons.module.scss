@@ -1,0 +1,34 @@
+@import "default.theme";
+
+%canvasButton {
+  border: none;
+  padding: 10px;
+  background-color: transparent;
+  color: $toggle-off;
+  cursor: pointer;
+
+  &:hover {
+    color: $toggle-on
+  }
+}
+
+.saveButton {
+  @extend %canvasButton;
+}
+
+.loadButton {
+  @extend %canvasButton;
+}
+
+.debugButton {
+  @extend %canvasButton;
+
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 5px;
+
+  &.active {
+    color: $toggle-on
+  }
+}
