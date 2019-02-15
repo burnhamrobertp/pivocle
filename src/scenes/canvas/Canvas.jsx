@@ -5,6 +5,7 @@ import { DropTarget } from 'react-dnd'
 import { ContextMenu, MenuItem, ContextMenuTrigger } from 'react-contextmenu'
 import v4 from 'uuid'
 
+import { getCanvas } from 'state/canvas/selectors/accessors'
 import { setNode, moveNode, removeNode } from 'state/nodes/actions'
 import { getNodes } from 'state/nodes/selectors/accessors'
 
@@ -13,12 +14,17 @@ import DebugButton from './components/DebugButton'
 import Node from './node/Node'
 import styles from './canvas.module.scss'
 import SaveButton from './components/SaveButton'
+import LoadButton from './components/LoadButton'
 
 class Canvas extends React.PureComponent {
   static propTypes = {
     // from react-dnd context
     connectDropTarget: T.func.isRequired,
     // from redux
+    canvas: T.shape({
+      canvasId: T.string.isRequired,
+      name: T.string.isRequired,
+    }),
     nodes: T.objectOf(T.object),
     setNode: T.func.isRequired,
     moveNode: T.func.isRequired,
@@ -51,6 +57,7 @@ class Canvas extends React.PureComponent {
           attributes={{ className: styles.contextMenuWrapper }}
         >
           <div className={styles.canvas}>
+            <LoadButton />
             <SaveButton />
             <DebugButton />
             {connectDropTarget(
@@ -85,6 +92,7 @@ class Canvas extends React.PureComponent {
 const CanvasWithDrop = DropTarget('Node', nodeTarget, collect)(Canvas)
 
 const mapStateToProps = state => ({
+  canvas: getCanvas(state),
   nodes: getNodes(state),
 })
 
