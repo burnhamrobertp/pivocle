@@ -5,16 +5,16 @@ import { DropTarget } from 'react-dnd'
 import { ContextMenu, MenuItem, ContextMenuTrigger } from 'react-contextmenu'
 import v4 from 'uuid'
 
-import { getCanvas } from 'state/canvas/selectors/accessors'
+import { getCanvases } from 'state/canvas/selectors/accessors'
 import { setNode, moveNode, removeNode } from 'state/nodes/actions'
 import { getNodes } from 'state/nodes/selectors/accessors'
 
 import { nodeTarget, collect } from './canvas-dnd'
 import DebugButton from './components/DebugButton'
 import Node from './node/Node'
-import styles from './canvas.module.scss'
 import SaveButton from './components/SaveButton'
 import LoadButton from './components/LoadButton'
+import styles from './canvas.module.scss'
 
 class Canvas extends React.PureComponent {
   static propTypes = {
@@ -60,6 +60,7 @@ class Canvas extends React.PureComponent {
             <LoadButton />
             <SaveButton />
             <DebugButton />
+
             {connectDropTarget(
               <div className={styles.canvas}>
                 {Object.values(nodes).map(node => (
@@ -70,7 +71,7 @@ class Canvas extends React.PureComponent {
                     y={node.y}
                   />
                 ))}
-              </div>
+              </div>,
             )}
           </div>
         </ContextMenuTrigger>
@@ -92,7 +93,7 @@ class Canvas extends React.PureComponent {
 const CanvasWithDrop = DropTarget('Node', nodeTarget, collect)(Canvas)
 
 const mapStateToProps = state => ({
-  canvas: getCanvas(state),
+  canvas: getCanvases(state),
   nodes: getNodes(state),
 })
 
@@ -104,5 +105,5 @@ const mapDispatchToProps = {
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(CanvasWithDrop)

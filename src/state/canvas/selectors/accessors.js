@@ -1,1 +1,1 @@
-export const getCanvas = state => state.canvas
+export const getCanvases = state => state.canvas.index

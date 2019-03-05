@@ -3,11 +3,10 @@ import T from 'prop-types'
 import { connect } from 'react-redux'
 import HTML5Backend from 'react-dnd-html5-backend'
 import { DragDropContextProvider } from 'react-dnd'
-import v4 from 'uuid'
-
 
 import currentCanvasIdSelector from './state/canvas/selectors/current-canvas-id.selector'
 import { setCanvas } from './state/canvas/actions'
+import { newCanvas } from './state/canvas/reducer'
 import ConfigContextProvider from './config/config-context-provider'
 
 import Canvas from './scenes/canvas/Canvas'
@@ -20,13 +19,8 @@ class Pivocle extends React.PureComponent {
   }
 
   componentDidMount() {
-    const canvas = {
-      canvasId: v4(),
-      name: 'Untitled Canvas',
-    }
-
     // create a default canvas
-    this.props.setCanvas({ canvas })
+    this.props.setCanvas({ canvas: newCanvas() })
   }
 
   render() {

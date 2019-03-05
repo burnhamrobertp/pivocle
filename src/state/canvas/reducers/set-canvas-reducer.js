@@ -1,6 +1,9 @@
 const setCanvasReducer = (state, { payload }) => ({
   ...state,
-  ...payload.canvas,
+  index: {
+    ...state.index,
+    [payload.canvasId]: payload.canvas,
+  },
 })
 
 export default setCanvasReducer

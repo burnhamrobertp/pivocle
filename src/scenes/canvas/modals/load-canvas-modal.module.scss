@@ -1,0 +1,26 @@
+@import "default.theme";
+
+$modal-width: 250px;
+$modal-height: 250px;
+
+.modal {
+  width: $modal-width;
+  height: $modal-height;
+  position: absolute;
+  top: calc(50% - #{$modal-height} / 2);
+  left: calc(50% - #{$modal-width} / 2);
+  border: $modal-border;
+
+  header {
+    text-align: center;
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $overlay-background;
+}

@@ -1,8 +1,8 @@
 import { createSelector } from 'reselect'
-import { getCanvas } from './accessors'
+import makeCanvasSelector from './make-canvas-selector'
 
 const currentCanvasIdSelector = createSelector(
-  getCanvas,
+  makeCanvasSelector(),
   canvas => canvas && canvas.canvasId,
 )
 
