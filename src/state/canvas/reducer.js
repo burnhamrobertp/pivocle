@@ -4,7 +4,7 @@ import setCurrentCanvasReducer from './reducers/set-current-canvas-reducer'
 import v4 from 'uuid'
 
 const initialState = {
-  current: undefined,
+  currentId: undefined,
   index: {},
 }
 

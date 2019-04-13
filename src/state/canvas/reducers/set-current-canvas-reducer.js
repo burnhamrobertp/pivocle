@@ -1,6 +1,6 @@
-const setCurrentCanvasReducer = (state, {payload}) => ({
+const setCurrentCanvasReducer = (state, { payload }) => ({
   ...state,
-  current: payload.canvasId,
+  currentId: payload.canvasId,
 })
 
 export default setCurrentCanvasReducer
