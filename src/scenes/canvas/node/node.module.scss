@@ -41,6 +41,9 @@
       background-color: transparent;
       resize: none;
       font-size: 13px;
+      line-height: 15px;
+      // removes the up/down arrows when initially rendering node descriptions
+      overflow:hidden;
 
       &:hover {
         cursor: inherit;
