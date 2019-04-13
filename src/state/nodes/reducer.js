@@ -1,6 +1,8 @@
 import { handleActions } from 'redux-actions'
 import setNodesReducer from './reducers/set-nodes-reducer'
 import setNodeReducer from './reducers/set-node-reducer'
+import setNodeTitleReducer from './reducers/set-node-title-reducer'
+import setNodeDescriptionReducer from './reducers/set-node-description-reducer'
 import moveNodeReducer from './reducers/move-node-reducer'
 import removeNodeReducer from './reducers/remove-node-reducer'
 import v4 from 'uuid'
@@ -23,6 +25,8 @@ export default handleActions(
     NODES: {
       SET_ALL: setNodesReducer,
       SET: setNodeReducer,
+      SET_TITLE: setNodeTitleReducer,
+      SET_DESCRIPTION: setNodeDescriptionReducer,
       MOVE: moveNodeReducer,
       REMOVE: removeNodeReducer,
     },

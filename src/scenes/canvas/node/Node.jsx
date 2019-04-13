@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import { DragSource } from 'react-dnd'
 import { withConfigContext } from 'config/config-context'
 import { getNode } from 'state/nodes/selectors/accessors'
+import NodeTitle from './components/NodeTitle'
+import NodeDescription from './components/NodeDescription'
 import styles from './node.module.scss'
 
 class Node extends React.PureComponent {
@@ -23,17 +25,17 @@ class Node extends React.PureComponent {
 
   render() {
     const { debug, connectDragSource, isDragging } = this.props
-    const { x, y } = this.props.node
+    const { nodeId, x, y } = this.props.node
 
     if (isDragging) return null
 
     return connectDragSource(
       <div className={styles.node} style={{ width: '225px', top: y, left: x }}>
         <header>
-          <input type="text" placeholder="provide title here..."/>
+          <NodeTitle nodeId={nodeId} />
         </header>
         <section>
-          <textarea placeholder="provide a description here..."/>
+          <NodeDescription nodeId={nodeId} />
         </section>
         {debug && (
           <code className={styles.debug}>
