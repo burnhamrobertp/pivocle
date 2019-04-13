@@ -4,27 +4,23 @@ import { connect } from 'react-redux'
 import HTML5Backend from 'react-dnd-html5-backend'
 import { DragDropContextProvider } from 'react-dnd'
 
-import { setCanvas, setCurrentCanvas } from './state/canvas/actions'
-import { newCanvas } from './state/canvas/reducer'
+import { loadState } from './state/app/actions'
+import { getCurrentCanvasId } from './state/canvas/selectors/accessors'
 import ConfigContextProvider from './config/config-context-provider'
 
 import Canvas from './scenes/canvas/Canvas'
 import styles from './pivocle.module.scss'
-import {getCurrentCanvasId} from './state/canvas/selectors/accessors'
 
 class Pivocle extends React.PureComponent {
   static propTypes = {
     canvasId: T.string,
     // from redux
-    setCanvas: T.func.isRequired,
-    setCurrentCanvas: T.func.isRequired,
+    loadState: T.func.isRequired,
   }
 
   componentDidMount() {
-    const canvas = newCanvas()
-    // create a default canvas
-    this.props.setCanvas({ canvas })
-    this.props.setCurrentCanvas({ canvasId: canvas.canvasId })
+    // load any saved canvases, also creates a default canvas if no canvases exist in savestate
+    this.props.loadState()
   }
 
   render() {
@@ -34,7 +30,7 @@ class Pivocle extends React.PureComponent {
       <ConfigContextProvider>
         <DragDropContextProvider backend={HTML5Backend}>
           <div className={styles.pivocle}>
-            {canvasId && <Canvas canvasId={canvasId} />}
+            {canvasId && <Canvas canvasId={canvasId}/>}
           </div>
         </DragDropContextProvider>
       </ConfigContextProvider>
@@ -48,8 +44,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = {
-  setCanvas,
-  setCurrentCanvas,
+  loadState,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Pivocle)

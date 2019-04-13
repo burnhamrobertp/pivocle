@@ -3,20 +3,20 @@ import { connect } from 'react-redux'
 import T from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave } from '@fortawesome/free-solid-svg-icons/faSave'
-import { saveCanvas } from 'state/canvas/actions'
+import { saveState } from 'state/app/actions'
 import styles from './buttons.module.scss'
 
 class SaveButton extends React.PureComponent {
   static propTypes = {
     // from redux
-    saveCanvas: T.func.isRequired
+    saveState: T.func.isRequired
   }
 
   render() {
-    const { saveCanvas } = this.props
+    const { saveState } = this.props
 
     return (
-      <button className={styles.saveButton} onClick={saveCanvas}>
+      <button className={styles.saveButton} onClick={saveState}>
         <FontAwesomeIcon icon={faSave} size="2x" />
       </button>
     )
@@ -25,7 +25,7 @@ class SaveButton extends React.PureComponent {
 
 // connected components below
 const mapDispatchToProps = {
-  saveCanvas,
+  saveState,
 }
 
 export default connect(null, mapDispatchToProps)(SaveButton)
