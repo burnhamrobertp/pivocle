@@ -5,10 +5,11 @@ export const nodeTarget = {
     }
     const item = monitor.getItem()
     const delta = monitor.getDifferenceFromInitialOffset()
+
     const x = Math.round(item.x + delta.x)
     const y = Math.round(item.y + delta.y)
 
-    component.moveNode(item.id, x, y)
+    component.moveNode(item.nodeId, x, y)
   },
 }
 

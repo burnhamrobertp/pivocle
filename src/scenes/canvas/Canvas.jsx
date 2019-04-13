@@ -3,11 +3,11 @@ import { connect } from 'react-redux'
 import T from 'prop-types'
 import { DropTarget } from 'react-dnd'
 import { ContextMenu, MenuItem, ContextMenuTrigger } from 'react-contextmenu'
-import v4 from 'uuid'
 
 import { getCanvas } from 'state/canvas/selectors/accessors'
 import { setNode, moveNode, removeNode } from 'state/nodes/actions'
-import { getNodes } from 'state/nodes/selectors/accessors'
+import { getCanvasNodes } from 'state/nodes/selectors/accessors'
+import { newNode } from 'state/nodes/reducer'
 
 import { nodeTarget, collect } from './canvas-dnd'
 import DebugButton from './components/DebugButton'
@@ -25,22 +25,17 @@ class Canvas extends React.PureComponent {
       canvasId: T.string.isRequired,
       name: T.string.isRequired,
     }),
-    nodes: T.objectOf(T.object),
+    nodeIds: T.arrayOf(T.string),
     setNode: T.func.isRequired,
     moveNode: T.func.isRequired,
     removeNode: T.func.isRequired,
   }
 
-  addNode = e => {
-    const nodeId = v4()
-    this.props.setNode({
-      nodeId,
-      node: {
-        nodeId,
-        x: e.clientX,
-        y: e.clientY,
-      },
-    })
+  addNode = ({ clientX: x, clientY: y }) => {
+    const { canvasId } = this.props.canvas
+    const node = newNode({ canvasId, x, y })
+
+    this.props.setNode({ canvasId, node })
   }
 
   moveNode(nodeId, x, y) {
@@ -48,7 +43,7 @@ class Canvas extends React.PureComponent {
   }
 
   render() {
-    const { nodes, connectDropTarget } = this.props
+    const { nodeIds, connectDropTarget } = this.props
 
     return (
       <React.Fragment>
@@ -57,21 +52,16 @@ class Canvas extends React.PureComponent {
           attributes={{ className: styles.contextMenuWrapper }}
         >
           <div className={styles.canvas}>
-            <LoadButton />
-            <SaveButton />
-            <DebugButton />
+            <LoadButton/>
+            <SaveButton/>
+            <DebugButton/>
 
             {connectDropTarget(
               <div className={styles.canvas}>
-                {Object.values(nodes).map(node => (
-                  <Node
-                    key={node.nodeId}
-                    id={node.nodeId}
-                    x={node.x}
-                    y={node.y}
-                  />
+                {nodeIds.map(nodeId => (
+                  <Node key={nodeId} nodeId={nodeId} />
                 ))}
-              </div>,
+              </div>
             )}
           </div>
         </ContextMenuTrigger>
@@ -94,7 +84,7 @@ const CanvasWithDrop = DropTarget('Node', nodeTarget, collect)(Canvas)
 
 const mapStateToProps = (state, props) => ({
   canvas: getCanvas(state, props),
-  nodes: getNodes(state),
+  nodeIds: getCanvasNodes(state, props),
 })
 
 const mapDispatchToProps = {
