@@ -19,7 +19,7 @@ class Pivocle extends React.PureComponent {
   }
 
   componentDidMount() {
-    // load any saved canvases, also creates a default canvas if no canvases exist in savestate
+    // load any saved canvases; also creates a default canvas if no canvases exist in localStorage
     this.props.loadState()
   }
 
