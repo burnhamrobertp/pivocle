@@ -1,6 +1,7 @@
 import React from 'react'
 import T from 'prop-types'
 import { connect } from 'react-redux'
+import TextareaAutosize from 'react-textarea-autosize';
 import { getNode } from 'state/nodes/selectors/accessors'
 import { setNodeDescription } from 'state/nodes/actions'
 
@@ -23,7 +24,7 @@ class NodeDescription extends React.PureComponent {
     const { description } = this.props
 
     return (
-      <textarea placeholder="provide a description here..." value={description} onChange={this.handleChange}/>
+      <TextareaAutosize placeholder="provide a description here..." value={description} onChange={this.handleChange}/>
     )
   }
 }
