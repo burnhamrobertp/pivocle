@@ -5,7 +5,7 @@ import { DropTarget } from 'react-dnd'
 import { ContextMenu, MenuItem, ContextMenuTrigger } from 'react-contextmenu'
 import v4 from 'uuid'
 
-import { getCanvases } from 'state/canvas/selectors/accessors'
+import { getCanvas } from 'state/canvas/selectors/accessors'
 import { setNode, moveNode, removeNode } from 'state/nodes/actions'
 import { getNodes } from 'state/nodes/selectors/accessors'
 
@@ -92,8 +92,8 @@ class Canvas extends React.PureComponent {
 // react-dnd component
 const CanvasWithDrop = DropTarget('Node', nodeTarget, collect)(Canvas)
 
-const mapStateToProps = state => ({
-  canvas: getCanvases(state),
+const mapStateToProps = (state, props) => ({
+  canvas: getCanvas(state, props),
   nodes: getNodes(state),
 })
 

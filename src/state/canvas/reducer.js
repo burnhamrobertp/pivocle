@@ -1,8 +1,10 @@
-import { handleActions } from 'redux-actions'
+import {handleActions} from 'redux-actions'
 import setCanvasReducer from './reducers/set-canvas-reducer'
+import setCurrentCanvasReducer from './reducers/set-current-canvas-reducer'
 import v4 from 'uuid'
 
 const initialState = {
+  current: undefined,
   index: {},
 }
 
@@ -15,7 +17,8 @@ export default handleActions(
   {
     CANVAS: {
       SET: setCanvasReducer,
+      SET_CURRENT: setCurrentCanvasReducer,
     },
   },
-  initialState
+  initialState,
 )

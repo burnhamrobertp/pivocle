@@ -2,7 +2,7 @@ const setCanvasReducer = (state, { payload }) => ({
   ...state,
   index: {
     ...state.index,
-    [payload.canvasId]: payload.canvas,
+    [payload.canvas.canvasId]: payload.canvas,
   },
 })
 
