@@ -12,7 +12,7 @@ class Node extends React.PureComponent {
   static propTypes = {
     // from redux
     node: T.shape({
-      id: T.string.isRequired,
+      nodeId: T.string.isRequired,
       x: T.number.isRequired,
       y: T.number.isRequired,
     }).isRequired,
