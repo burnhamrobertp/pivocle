@@ -1,6 +1,7 @@
 import React from 'react'
 import T from 'prop-types'
 import { connect } from 'react-redux'
+import Modal from 'react-modal'
 import HTML5Backend from 'react-dnd-html5-backend'
 import { DragDropContextProvider } from 'react-dnd'
 
@@ -10,6 +11,8 @@ import ConfigContextProvider from './config/config-context-provider'
 
 import Canvas from './scenes/canvas/Canvas'
 import styles from './pivocle.module.scss'
+
+Modal.setAppElement('#root')
 
 class Pivocle extends React.PureComponent {
   static propTypes = {

@@ -1,8 +1,16 @@
 import React from 'react'
+import T from 'prop-types'
+import { connect } from 'react-redux'
 import Modal from 'react-modal'
+
+import canvasesSelector from 'state/canvas/selectors/canvasesSelector'
 import styles from './load-canvas-modal.module.scss'
 
 class LoadCanvasModal extends React.PureComponent {
+  static propTypes = {
+    canvases: T.array.isRequired,
+  }
+
   state = { isOpen: false }
 
   openModal = () => this.setState({ isOpen: true })
@@ -10,6 +18,7 @@ class LoadCanvasModal extends React.PureComponent {
 
   render() {
     const { isOpen } = this.state
+    const { canvases } = this.props
 
     return (
       <Modal
@@ -18,17 +27,20 @@ class LoadCanvasModal extends React.PureComponent {
         className={styles.modal}
         overlayClassName={styles.overlay}
       >
-        <header>Load Pivocle</header>
-        <body>
+        <header>Load Canvas</header>
+        <div>
           <ul>
             {}
           </ul>
-        </body>
+        </div>
       </Modal>
     )
   }
 }
 
 // connected components below
+const mapStateToProps = state => ({
+  canvases: canvasesSelector(state),
+})
 
-export default LoadCanvasModal
+export default connect(mapStateToProps, null, null, { forwardRef: true })(LoadCanvasModal)

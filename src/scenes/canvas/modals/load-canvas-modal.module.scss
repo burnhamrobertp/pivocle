@@ -9,7 +9,10 @@ $modal-height: 250px;
   position: absolute;
   top: calc(50% - #{$modal-height} / 2);
   left: calc(50% - #{$modal-width} / 2);
+  background-color: #fff;
   border: $modal-border;
+  border-radius: 8px;
+  padding: 10px;
 
   header {
     text-align: center;
