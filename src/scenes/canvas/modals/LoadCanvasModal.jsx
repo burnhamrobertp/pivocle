@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import Modal from 'react-modal'
 
 import canvasesSelector from 'state/canvas/selectors/canvasesSelector'
+import LoadCanvasModalRow from './LoadCanvasModalRow'
 import styles from './load-canvas-modal.module.scss'
 
 class LoadCanvasModal extends React.PureComponent {
@@ -27,11 +28,11 @@ class LoadCanvasModal extends React.PureComponent {
         className={styles.modal}
         overlayClassName={styles.overlay}
       >
-        <header>Load Canvas</header>
-        <div>
-          <ul>
-            {}
-          </ul>
+        <h3>Load Canvas</h3>
+        <div className={styles.canvasList}>
+          {canvases.map(({ canvasId }) => (
+            <LoadCanvasModalRow key={canvasId} canvasId={canvasId} />
+          ))}
         </div>
       </Modal>
     )
