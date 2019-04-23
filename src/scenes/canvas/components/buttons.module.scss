@@ -12,11 +12,15 @@
   }
 }
 
-.saveButton {
+.newButton {
   @extend %canvasButton;
 }
 
 .loadButton {
+  @extend %canvasButton;
+}
+
+.saveButton {
   @extend %canvasButton;
 }
 

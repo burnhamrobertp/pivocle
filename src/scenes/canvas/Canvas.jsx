@@ -15,6 +15,7 @@ import Node from './node/Node'
 import SaveButton from './components/SaveButton'
 import LoadButton from './components/LoadButton'
 import styles from './canvas.module.scss'
+import NewButton from './components/NewButton'
 
 class Canvas extends React.PureComponent {
   static propTypes = {
@@ -52,16 +53,17 @@ class Canvas extends React.PureComponent {
           attributes={{ className: styles.contextMenuWrapper }}
         >
           <div className={styles.canvas}>
-            <LoadButton/>
-            <SaveButton/>
-            <DebugButton/>
+            <NewButton />
+            <LoadButton />
+            <SaveButton />
+            <DebugButton />
 
             {connectDropTarget(
               <div className={styles.canvas}>
                 {nodeIds.map(nodeId => (
                   <Node key={nodeId} nodeId={nodeId} />
                 ))}
-              </div>
+              </div>,
             )}
           </div>
         </ContextMenuTrigger>
