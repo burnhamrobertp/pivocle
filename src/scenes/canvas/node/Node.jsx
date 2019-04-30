@@ -36,7 +36,7 @@ class Node extends React.PureComponent {
       y: e.clientY - this.offsetY
     })
     // reset offset values
-    this.offsetX = this.offsetY = undefined;
+    this.offsetX = this.offsetY = undefined
   }
 
   render() {

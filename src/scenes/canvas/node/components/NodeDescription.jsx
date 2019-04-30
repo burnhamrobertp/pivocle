@@ -1,7 +1,7 @@
 import React from 'react'
 import T from 'prop-types'
 import { connect } from 'react-redux'
-import TextareaAutosize from 'react-textarea-autosize';
+import TextareaAutosize from 'react-textarea-autosize'
 import { getNode } from 'state/nodes/selectors/accessors'
 import { setNodeDescription } from 'state/nodes/actions'
 
@@ -10,7 +10,7 @@ class NodeDescription extends React.PureComponent {
     nodeId: T.string.isRequired,
     // from redux
     description: T.string.isRequired,
-    setNodeDescription: T.func.isRequired,
+    setNodeDescription: T.func.isRequired
   }
 
   handleChange = e => {
@@ -24,23 +24,30 @@ class NodeDescription extends React.PureComponent {
     const { description } = this.props
 
     return (
-      <TextareaAutosize placeholder="provide a description here..." value={description} onChange={this.handleChange}/>
+      <TextareaAutosize
+        placeholder="provide a description here..."
+        value={description}
+        onChange={this.handleChange}
+      />
     )
   }
 }
 
 // connected component below
 const mapStateToProps = (state, props) => ({
-  description: getNode(state, props).description,
+  description: getNode(state, props).description
 })
 
 const mapDispatchToProps = {
-  setNodeDescription,
+  setNodeDescription
 }
 
-const NodeDescContainer = connect(mapStateToProps, mapDispatchToProps)(NodeDescription)
+const NodeDescContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(NodeDescription)
 NodeDescContainer.propTypes = {
-  nodeId: T.string.isRequired,
+  nodeId: T.string.isRequired
 }
 
 export default NodeDescContainer
